@@ -68,7 +68,7 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('backend.brands.show');
     }
 
     /**
@@ -79,7 +79,7 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.brands.edit');
     }
 
     /**

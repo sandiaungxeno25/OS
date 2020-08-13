@@ -66,7 +66,7 @@ class SubcategoryController extends Controller
      */
     public function show($id)
     {
-        
+        return view('backend.subcategories.show');
     }
 
     /**
@@ -77,7 +77,7 @@ class SubcategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.subcategories.edit');
     }
 
     /**
