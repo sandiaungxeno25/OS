@@ -19,10 +19,33 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-
-Route::get('/', 'BackendController@dashboard')->name('dashboard');
+// Badkend-------------------------------------------
+Route::middleware('auth')->group(function(){
+	
+Route::resource('orders','OrderController');	
+Route::get('dashboard', 'BackendController@dashboard')->name('dashboard');
 Route::resource('items','ItemController');
 //7 (get-4 / post -1 / put-1 /delete-1)
 Route::resource('brands','BrandController');
 Route::resource('categories','CategoryController');
 Route::resource('subcategories','SubcategoryController');
+});
+
+// Frontend-----------------------------------
+
+Route::get('/','FrontendController@home')->name('home');
+Route::get('frontitem','FrontendController@frontitem')->name('frontitem');
+Route::get('frontdetail/{id}','FrontendController@frontdetail')->name('frontdetail');
+Route::get('frontabout','FrontendController@frontabout')->name('frontabout');
+Route::get('frontcontact','FrontendController@frontcontact')->name('frontcontact');
+Route::get('frontcheckout','FrontendController@frontcheckout')->name('frontcheckout');
+Route::get('frontregister','FrontendController@frontregister')->name('frontregister');
+Route::get('frontlogin','FrontendController@frontlogin')->name('frontlogin');
+Route::get('frontprofile','FrontendController@frontprofile')->name('frontprofile');
+
+
+// endbackend-------------------------------------------
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

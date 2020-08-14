@@ -8,7 +8,8 @@ use App\Brand;
 use App\Subcategory;
 
 class ItemController extends Controller
-{
+{   
+
     /**
      * Display a listing of the resource.
      *
@@ -136,9 +137,11 @@ class ItemController extends Controller
 
         $request->item_photo->move(public_path('backend/itemimg'),$imageName);
         $myfile='backend/itemimg/'.$imageName;
-                //delete old photo(unlink)
+                
+        //delete old photo(unlink)
+        $oldimg=$request->oldphoto;
 
-        //File::delete('backend/itemimg'.$post->image);
+       @unlink($oldimg);
 
 
          }else{

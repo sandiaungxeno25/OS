@@ -14,7 +14,10 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('backend.brands.index');
+        $brands=Brand::all();
+        //dd($items);
+
+        return view('backend.brands.index',compact('brands'));
     }
 
     /**
@@ -24,6 +27,7 @@ class BrandController extends Controller
      */
     public function create()
     {
+        
         return view('backend.brands.create');
     }
 
@@ -51,8 +55,10 @@ class BrandController extends Controller
         
         //Data insert 
         $brand = new Brand;
+        
         $brand->name =$request->brand_name;
         $brand->photo =$myfile;
+        
         $brand->save();
 
 
@@ -79,7 +85,9 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.brands.edit');
+        
+        $brand=Brand::find($id);
+        return view('backend.brands.edit',compact('brand'));
     }
 
     /**
@@ -91,7 +99,42 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            
+            'brand_name'=>'required',
+            'brand_photo'=>'sometimes',
+            
+        ]);
+       
+        //if include file, upload
+        if($request->hasFile('brand_photo')){
+
+
+        $imageName=time().'.'.$request->brand_photo->extension();
+
+        $request->brand_photo->move(public_path('backend/brandimg'),$imageName);
+        $myfile='backend/brandimg/'.$imageName;
+                
+        //delete old photo(unlink)
+        $oldimg=$request->oldphoto;
+
+       @unlink($oldimg);
+
+
+         }else{
+            $myfile=$request->oldphoto;
+         }
+       
+        //data update
+        $brand = Brand::find($id);
+        
+        $brand->name =$request->brand_name;
+        $brand->photo =$myfile;
+        
+        $brand->save();
+        
+        //redirect
+        return redirect()->route('brands.index');
     }
 
     /**
@@ -102,6 +145,9 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand=Brand::find($id);
+        $brand->delete();
+        //redirect
+        return redirect()->route('brands.index');
     }
 }

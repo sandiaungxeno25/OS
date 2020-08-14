@@ -9,4 +9,14 @@ class Subcategory extends Model
     protected $fillable = [
         'name', 'category_id'
     ];
+
+     public function brand($value='')
+    {
+    	return $this->belongsTo('App\Brand');
+    }
+
+    public function subcategory($value='')
+    {
+    	return $this->belongsTo('App\Subcategory');
+    }
 }

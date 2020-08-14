@@ -23,17 +23,30 @@
 					<p>{{$item->codeno}}</p>
 				</div>
 				<div class="col-md-6">
-					<label>Price</label>
+					<label>Product Price</label>
 				</div>
 				<div class="col-md-6">
 					<p>{{$item->price}}</p>
 				</div>
 				<div class="col-md-6">
-					<label>Discount Price</label>
+					<label>Description</label>
 				</div>
 				<div class="col-md-6">
-					<p>{{$item->discount}}</p>
+					<p>{{$item->description}}</p>
 				</div>
+				<div class="col-md-6">
+					<label> Brand</label>
+				</div>
+				<div class="col-md-6">
+					<p>{{$item->brand->name}}</p>
+				</div>
+				<div class="col-md-6">
+					<label> Subcategory</label>
+				</div>
+				<div class="col-md-6">
+					<p>{{$item->subcategory->name}}</p>
+				</div>
+
 			</div>
 
 		</div>
