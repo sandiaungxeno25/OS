@@ -20,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 
 // Badkend-------------------------------------------
-Route::middleware('auth')->group(function(){
+Route::middleware('role:admin')->group(function(){
 	
-Route::resource('orders','OrderController');	
+	
 Route::get('dashboard', 'BackendController@dashboard')->name('dashboard');
 Route::resource('items','ItemController');
 //7 (get-4 / post -1 / put-1 /delete-1)
@@ -30,6 +30,8 @@ Route::resource('brands','BrandController');
 Route::resource('categories','CategoryController');
 Route::resource('subcategories','SubcategoryController');
 });
+Route::resource('orders','OrderController');
+
 
 // Frontend-----------------------------------
 
@@ -44,8 +46,11 @@ Route::get('frontlogin','FrontendController@frontlogin')->name('frontlogin');
 Route::get('frontprofile','FrontendController@frontprofile')->name('frontprofile');
 
 
+
 // endbackend-------------------------------------------
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('getitems','FrontendController@getItems')->name('getitems');

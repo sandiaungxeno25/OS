@@ -19,4 +19,9 @@ class Subcategory extends Model
     {
     	return $this->belongsTo('App\Subcategory');
     }
+
+    public function category($value='')
+    {
+        return $this->belongsTo('App\Category');
+    }
 }

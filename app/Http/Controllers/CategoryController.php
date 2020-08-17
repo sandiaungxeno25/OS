@@ -14,8 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('backend.categories.index');
-    }
+        $categories=Category::all();
+        //dd($items);
+
+        return view('backend.categories.index',compact('categories'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -79,7 +81,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.categories.edit');
+        $category=Category::find($id);
+        return view('backend.categories.edit',compact('category'));
     }
 
     /**
@@ -91,7 +94,42 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+
+            'category_name'=>'required',
+            'category_photo'=>'sometimes',
+            
+        ]);
+
+        //if include file, upload
+        if($request->hasFile('category_photo')){
+
+
+            $imageName=time().'.'.$request->category_photo->extension();
+
+            $request->category_photo->move(public_path('backend/categoryimg'),$imageName);
+            $myfile='backend/categoryimg/'.$imageName;
+
+        //delete old photo(unlink)
+            $oldimg=$request->oldphoto;
+
+            @unlink($oldimg);
+
+
+        }else{
+            $myfile=$request->oldphoto;
+        }
+
+        //data update
+        $category = Category::find($id);
+        
+        $category->name =$request->category_name;
+        $category->photo =$myfile;
+        
+        $category->save();
+        
+        //redirect
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -102,6 +140,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category=Category::find($id);
+        $category->delete();
+        //redirect
+        return redirect()->route('categories.index');
     }
 }

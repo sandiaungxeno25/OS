@@ -81,7 +81,9 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    <a class="dropdown-item" href="{{ route('frontprofile') }}">Profile</a>
                                 </div>
+                               
                             </li>
                         @endguest
                    
@@ -100,7 +102,7 @@
   <div class="container my-3">
 
     <div class="row">
-
+{{-- 
       <div class="col-lg-3">
 
         <h1 class="my-4">Shop Name</h1>
@@ -110,7 +112,10 @@
           <a href="#" class="list-group-item">Category 3</a>
         </div>
 
-      </div>
+      </div> --}}
+
+      @yield('sidebar')
+      
       <!-- /.col-lg-3 -->
 
       @yield('content')

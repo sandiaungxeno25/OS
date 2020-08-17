@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+    public function_construct(){
+        $this->middleware('role:admin')->except('store');
+        $this->middleware('role:customer')->only('store');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders=Order::all();
+        //dd($items);
+
+        return view('backend.orders.index',compact('orders'));
     }
 
     /**
