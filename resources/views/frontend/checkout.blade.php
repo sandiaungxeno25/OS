@@ -1,12 +1,11 @@
 @extends('frontendtemplate')
 @section('content')
-<div class="col-lg-9">
-	<h2>Checkout Page</h2>
+<div class="col-lg-12">
 	<div id="checkout_body">
 	<div class="container my-5 text-center">
 		<div class="row">
 			<div class="offset-md-2 col-md-8">
-				<h3 class="py-3">Check Out</h3>
+				<h3 class="py-2">Check Out</h3>
 				<div class="table-responsive">
 					<table class="table">
 						<thead>
