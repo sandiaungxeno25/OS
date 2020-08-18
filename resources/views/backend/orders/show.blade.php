@@ -1,7 +1,7 @@
 @extends('backendtemplate')
 @section('content')
 <div class="container-fluid">
-	<h2>Order Detail</h2>
+	<h2 class="text-center">Order Detail</h2>
 	
 		<div class="row">
 			<div class="offset-2 col-md-8">

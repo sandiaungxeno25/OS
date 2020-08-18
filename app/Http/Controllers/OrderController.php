@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use App\Item;
 // use App\Order_detail;
@@ -22,9 +23,10 @@ class OrderController extends Controller
     public function index()
     {
         $orders=Order::all();
+        $user=User::all();
         //dd($items);
 
-        return view('backend.orders.index',compact('orders'));
+        return view('backend.orders.index',compact('orders','user'));
     }
 
     /**
