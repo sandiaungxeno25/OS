@@ -18,5 +18,10 @@ class Order extends Model
     	->withTimestamps();
 
     }
-    
+
+    // public function orderdetails($value='')
+    // {
+    // 	return $this->belongsToMany('App\Orderdetail','order_detail');
+
+    // }    
 }

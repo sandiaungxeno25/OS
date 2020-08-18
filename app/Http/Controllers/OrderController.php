@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Order;
 use Illuminate\Support\Facades\Auth;
+use App\Item;
+// use App\Order_detail;
 
 class OrderController extends Controller
 {
-    public function_construct(){
+    public function __construct($value=''){
         $this->middleware('role:admin')->except('store');
         $this->middleware('role:customer')->only('store');
     }
@@ -32,7 +34,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -76,7 +78,11 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $item=Item::find($id);
+         // $orderdetail=Orderdetail::find($id);
+        $order=Order::find($id);
+        //dd($item);
+        return view('backend.orders.show',compact('item','order'));
     }
 
     /**

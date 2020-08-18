@@ -10,15 +10,10 @@ class Subcategory extends Model
         'name', 'category_id'
     ];
 
-     public function brand($value='')
+    public function items($value='')
     {
-    	return $this->belongsTo('App\Brand');
-    }
-
-    public function subcategory($value='')
-    {
-    	return $this->belongsTo('App\Subcategory');
-    }
+    	return $this->hasMany('App\Item');
+    }  
 
     public function category($value='')
     {

@@ -13,6 +13,7 @@
 				<th>Note</th>
 				<th>Total</th>
 				<th>User_id</th>
+				<th>Description</th>
 
 			</tr>
 		</thead>
@@ -27,6 +28,8 @@
 				<td>{{$order->note}}</td>
 				<td>{{$order->total}}</td>
 				<td>{{$order->user_id}}</td>
+				 <td><a href="{{route('orders.show',$order->id)}}">
+					<span class="badge badge-primary badge-pill">Detail</span></a></td>
 				
 			</tr>
 			@endforeach

@@ -57,7 +57,7 @@ class SubcategoryController extends Controller
 
 
         //Redirect
-        return redirect()->route('categories.index');
+        return redirect()->route('subcategories.index');
     }
 
     /**

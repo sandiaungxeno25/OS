@@ -10,7 +10,7 @@
         <!-- Nested Row within Card Body -->
         <div class="row">
           <div class="col-lg-4 d-none d-lg-block bg-register-image my-3">
-          	<img src="{{('')}}" alt="Image" class="w-50">
+          	<img src="{{(url('frontend/image/ani1.jpg'))}}" alt="Image" class="w-50">
           </div>
           <div class="col-lg-8 my-3 text-left">
           	<h3>Your Profile</h3>

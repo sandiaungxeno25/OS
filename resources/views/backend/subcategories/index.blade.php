@@ -18,7 +18,7 @@
 			<tr>
 				<td>{{$i++}}</td>
 				<td>{{$subcategory->name}}</td>
-				<td>{{$subcategory->category_id}}</td>
+				<td>{{$subcategory->category->name}}</td>
 				<td>
 					<a href="{{route('subcategories.edit',$subcategory->id)}}" class="btn btn-warning">Edit</a>
 					

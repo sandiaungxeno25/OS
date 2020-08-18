@@ -19,7 +19,7 @@ class FrontendController extends Controller
     {
     	// $items=Item::orderBy('id','desc')->take(3)->get();
         $subcategories=Subcategory::all();
-        //dd($items);
+        //dd($subcategories);
         return view('frontend.items',compact('subcategories'));
     }
 
