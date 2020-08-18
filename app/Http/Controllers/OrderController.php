@@ -81,7 +81,7 @@ class OrderController extends Controller
         $item=Item::find($id);
          // $orderdetail=Orderdetail::find($id);
         $order=Order::find($id);
-        //dd($item);
+        dd($item);
         return view('backend.orders.show',compact('item','order'));
     }
 
